@@ -1,0 +1,33 @@
+openapi: 3.0.3
+info:
+  title: Payment API
+  description: API for processing payments
+  version: 1.0.0
+paths:
+  /payment:
+    post:
+      summary: Make a payment
+      operationId: makePayment
+      requestBody:
+        description: Payment details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentDetails'
+      responses:
+        '200':
+          description: Payment processed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentDetails'
+components:
+  schemas:
+    PaymentDetails:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+          example: 100.50
